@@ -265,17 +265,8 @@
     min-width: 0;
 }
 
-.bank-name,
-.bank-local-name {
+.bank-name {
     display: block;
-}
-
-.bank-local-name {
-    color: var(--bank-color);
-    font-family: var(--font-family-serif);
-    font-size: 1.42rem;
-    font-weight: 700;
-    line-height: 1.12;
 }
 
 .bank-name {

@@ -45,7 +45,6 @@ Add banks in `banks`:
   "id": "river",
   "shortName": "RIVER",
   "name": "River Bank",
-  "localName": "River Bank",
   "logo": "img/logo/river-bank.svg",
   "logoHeight": "3.2rem",
   "color": "#17633a"
@@ -101,4 +100,7 @@ Keep the relative paths intact unless you also update `card.html`:
 - `img/card/...`
 - `img/logo/...`
 
-Add a `LICENSE` file before publishing if you want others to reuse the template.
+
+## Contact
+
+`xovee.xu at gmail.com`

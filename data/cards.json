@@ -4,7 +4,6 @@
       "id": "river",
       "shortName": "RIVER",
       "name": "River Bank",
-      "localName": "河岸银行",
       "logo": "img/logo/river-bank.svg",
       "logoHeight": "3.2rem",
       "color": "#17633a"
@@ -13,7 +12,6 @@
       "id": "harbor",
       "shortName": "HARBOR",
       "name": "Harbor Bank",
-      "localName": "港湾银行",
       "logo": "img/logo/harbor-bank.svg",
       "logoHeight": "3.2rem",
       "color": "#0b5c8f"
@@ -22,7 +20,6 @@
       "id": "summit",
       "shortName": "SUMMIT",
       "name": "Summit Bank",
-      "localName": "山岳银行",
       "logo": "img/logo/summit-bank.svg",
       "logoHeight": "3.2rem",
       "color": "#7f4c16"

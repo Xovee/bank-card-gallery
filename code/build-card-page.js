@@ -256,7 +256,6 @@ function toSearchText(card, bank, typeLabel, networkLabels) {
     card.alt,
     bank.shortName,
     bank.name,
-    bank.localName,
     typeLabel,
     networkLabels,
     card.date,
@@ -332,7 +331,7 @@ function renderCard(card, index, bank, typeLabels, networkLabelsById, options = 
   ].filter(Boolean).join(" ");
 
   return [
-    `        <article class="card-entry" data-card-index="${index}" data-card-bank="${escapeAttribute(card.bank)}" data-card-bank-label="${escapeAttribute(bank.shortName)}" data-card-bank-name="${escapeAttribute(bank.name)}" data-card-bank-local-name="${escapeAttribute(bank.localName)}" data-card-type="${escapeAttribute(card.type)}" data-card-type-label="${escapeAttribute(typeLabel)}" data-card-network="${escapeAttribute(networks)}" data-card-network-labels="${escapeAttribute(networkLabels)}" data-card-title="${escapeAttribute(card.title)}" data-card-image="${escapeAttribute(card.image)}" data-card-alt="${escapeAttribute(card.alt || "")}" data-card-date="${escapeAttribute(card.date || "")}" data-card-date-label="${escapeAttribute(dateLabel)}" data-card-note="${escapeAttribute(card.note || "")}" data-card-code="${escapeAttribute(card.code || "")}" data-card-search="${escapeAttribute(searchText)}"${styleAttr}>`,
+    `        <article class="card-entry" data-card-index="${index}" data-card-bank="${escapeAttribute(card.bank)}" data-card-bank-label="${escapeAttribute(bank.shortName)}" data-card-bank-name="${escapeAttribute(bank.name)}" data-card-type="${escapeAttribute(card.type)}" data-card-type-label="${escapeAttribute(typeLabel)}" data-card-network="${escapeAttribute(networks)}" data-card-network-labels="${escapeAttribute(networkLabels)}" data-card-title="${escapeAttribute(card.title)}" data-card-image="${escapeAttribute(card.image)}" data-card-alt="${escapeAttribute(card.alt || "")}" data-card-date="${escapeAttribute(card.date || "")}" data-card-date-label="${escapeAttribute(dateLabel)}" data-card-note="${escapeAttribute(card.note || "")}" data-card-code="${escapeAttribute(card.code || "")}" data-card-search="${escapeAttribute(searchText)}"${styleAttr}>`,
     `          <button class="card-preview-button" type="button" aria-label="View ${escapeAttribute(card.title)}">`,
     "            <span class=\"card-frame\">",
     `              <img ${imageAttrs}>`,
@@ -367,10 +366,9 @@ function renderBankStyle(bank) {
 
 function renderBankLogo(bank) {
   if (bank.logo) {
-    const altText = [bank.localName, bank.name].filter(Boolean).join(" ");
     const logoAttrs = [
       `src="${escapeAttribute(bank.logo)}"`,
-      `alt="${escapeAttribute(altText || bank.shortName)}"`,
+      `alt="${escapeAttribute(bank.name || bank.shortName)}"`,
       "loading=\"lazy\"",
       "decoding=\"async\""
     ].filter(Boolean).join(" ");
@@ -394,7 +392,6 @@ function renderBankHeading(bank) {
     `      <h2 id="bank-${escapeAttribute(bank.id)}" class="bank-heading">`,
     renderBankLogo(bank),
     "        <span class=\"bank-wordmark\">",
-    bank.localName ? `          <span class="bank-local-name">${escapeHtml(bank.localName)}</span>` : "",
     `          <span class="bank-name">${escapeHtml(bank.name)}</span>`,
     "        </span>",
     "      </h2>"
