@@ -2,6 +2,8 @@
 
 A small static template for publishing a personal bank card gallery. It includes anonymized sample data, placeholder SVG card art, bank and timeline views, search, filters, sorting, and a card preview dialog.
 
+![Bank Card Gallery screenshot](img/screenshot.webp)
+
 ## Files
 
 ```text
