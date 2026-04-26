@@ -20,10 +20,6 @@ a:hover {text-decoration: underline;}
 .mono {font-family: var(--font-family-mono);}
 p.links {display: flex; flex-wrap: wrap; column-gap: 1.6em; row-gap: 0.5em;}
 
-/* page utilities */
-.breadcrumb {color: var(--text-grey-color);}
-.breadcrumb a {color: var(--text-grey-color);}
-
 /* shared data-display containers */
 .plot-container {width: 100%; aspect-ratio: .8;}
 .plot-container canvas {border-radius: 12px;}

@@ -156,30 +156,6 @@ function validateData(data) {
   });
 }
 
-function countCardsBy(cards, property) {
-  return cards.reduce((counts, card) => {
-    const value = card[property];
-    counts.set(value, (counts.get(value) || 0) + 1);
-    return counts;
-  }, new Map());
-}
-
-function renderSummary(data) {
-  const typeCounts = countCardsBy(data.cards, "type");
-  const bankCount = data.banks.length;
-  const creditCount = typeCounts.get("credit") || 0;
-  const debitCount = typeCounts.get("debit") || 0;
-
-  return [
-    "      <div class=\"card-summary\" aria-label=\"Card collection summary\">",
-    `        <div class="card-stat"><span class="card-stat-value">${data.cards.length}</span><span class="card-stat-label">Cards</span></div>`,
-    `        <div class="card-stat"><span class="card-stat-value">${bankCount}</span><span class="card-stat-label">Banks</span></div>`,
-    `        <div class="card-stat"><span class="card-stat-value">${creditCount}</span><span class="card-stat-label">Credit</span></div>`,
-    `        <div class="card-stat"><span class="card-stat-value">${debitCount}</span><span class="card-stat-label">Debit</span></div>`,
-    "      </div>"
-  ].join("\n");
-}
-
 function renderFilterButton(group, option, active) {
   const classes = active ? "filter-button active" : "filter-button";
   const pressed = active ? "true" : "false";
@@ -207,8 +183,6 @@ function renderFilterPanel(data) {
   const noun = totalCards === 1 ? "card" : "cards";
 
   return [
-    renderSummary(data),
-    "",
     "      <div class=\"card-toolbar\">",
     "        <label class=\"card-search-control\" for=\"card-search\">",
     "          <span>Search</span>",
