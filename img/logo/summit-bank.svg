@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="140" viewBox="0 0 560 140" role="img" aria-labelledby="title desc">
+  <title id="title">Summit Bank logo</title>
+  <desc id="desc">Anonymous sample bank logo for the card page template.</desc>
+  <rect width="560" height="140" fill="none"/>
+  <circle cx="64" cy="70" r="44" fill="#7f4c16"/>
+  <path d="M26 94 58 39l22 38 15-24 29 41H26Z" fill="#fff"/>
+  <path d="M58 39 45 94h-19l32-55Z" fill="#f4d39f" opacity=".9"/>
+  <text x="132" y="66" fill="#3f2a17" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Summit Bank</text>
+  <text x="132" y="102" fill="#72543a" font-family="Arial, Helvetica, sans-serif" font-size="23">山岳银行</text>
+</svg>

@@ -1,0 +1,131 @@
+{
+  "banks": [
+    {
+      "id": "river",
+      "shortName": "RIVER",
+      "name": "River Bank",
+      "localName": "河岸银行",
+      "logo": "img/logo/river-bank.svg",
+      "logoHeight": "3.2rem",
+      "color": "#17633a"
+    },
+    {
+      "id": "harbor",
+      "shortName": "HARBOR",
+      "name": "Harbor Bank",
+      "localName": "港湾银行",
+      "logo": "img/logo/harbor-bank.svg",
+      "logoHeight": "3.2rem",
+      "color": "#0b5c8f"
+    },
+    {
+      "id": "summit",
+      "shortName": "SUMMIT",
+      "name": "Summit Bank",
+      "localName": "山岳银行",
+      "logo": "img/logo/summit-bank.svg",
+      "logoHeight": "3.2rem",
+      "color": "#7f4c16"
+    }
+  ],
+  "types": [
+    {
+      "id": "debit",
+      "label": "Debit"
+    },
+    {
+      "id": "credit",
+      "label": "Credit"
+    }
+  ],
+  "networks": [
+    {
+      "id": "unionpay",
+      "label": "UnionPay"
+    },
+    {
+      "id": "visa",
+      "label": "Visa"
+    },
+    {
+      "id": "mastercard",
+      "label": "MasterCard"
+    },
+    {
+      "id": "amex",
+      "label": "AMEX"
+    }
+  ],
+  "cards": [
+    {
+      "title": "Everyday Debit",
+      "bank": "river",
+      "type": "debit",
+      "networks": ["unionpay"],
+      "image": "img/card/river-everyday-debit.svg",
+      "alt": "Anonymous green debit card illustration",
+      "width": 640,
+      "height": 402,
+      "date": "2022-03-30",
+      "active": true
+    },
+    {
+      "title": "Salary Card",
+      "bank": "river",
+      "type": "debit",
+      "networks": ["visa"],
+      "image": "img/card/river-salary-card.svg",
+      "alt": "Anonymous gray debit card illustration",
+      "width": 640,
+      "height": 402,
+      "date": "2021-08-12"
+    },
+    {
+      "title": "Travel Credit",
+      "bank": "harbor",
+      "type": "credit",
+      "networks": ["mastercard"],
+      "image": "img/card/harbor-travel-credit.svg",
+      "alt": "Anonymous blue credit card illustration",
+      "width": 640,
+      "height": 402,
+      "date": "2024-05-18",
+      "active": true
+    },
+    {
+      "title": "Student Card",
+      "bank": "harbor",
+      "type": "debit",
+      "networks": ["unionpay"],
+      "image": "img/card/harbor-student-card.svg",
+      "alt": "Anonymous teal debit card illustration",
+      "width": 640,
+      "height": 402,
+      "date": "2019-09-01",
+      "note": "Scan"
+    },
+    {
+      "title": "Gold Credit",
+      "bank": "summit",
+      "type": "credit",
+      "networks": ["visa"],
+      "image": "img/card/summit-gold-credit.svg",
+      "alt": "Anonymous gold credit card illustration",
+      "width": 640,
+      "height": 402,
+      "date": "2023-11-10"
+    },
+    {
+      "title": "Business Card",
+      "bank": "summit",
+      "type": "credit",
+      "networks": ["amex"],
+      "image": "img/card/summit-business-card.svg",
+      "alt": "Anonymous black business card illustration",
+      "width": 640,
+      "height": 402,
+      "date": "2025-01-06",
+      "active": true
+    }
+  ]
+}

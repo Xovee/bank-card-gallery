@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="402" viewBox="0 0 640 402" role="img" aria-labelledby="title desc">
+  <title id="title">Travel Credit sample card</title>
+  <desc id="desc">Anonymous blue credit card placeholder.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#576dcc"/>
+      <stop offset="1" stop-color="#13285c"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="402" rx="30" fill="url(#bg)"/>
+  <path d="M0 265 126 160l78 64 80-101 100 135 85-61 171 121v84H0Z" fill="#08183d" opacity=".55"/>
+  <path d="M0 311 140 220l73 59 71-86 99 118 88-51 169 86v56H0Z" fill="#cde3ff" opacity=".16"/>
+  <rect x="70" y="148" width="76" height="58" rx="10" fill="#e6cf8b"/>
+  <path d="M70 177h76M108 148v58" stroke="#9e8240" stroke-width="4" opacity=".55"/>
+  <text x="70" y="302" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">TRAVEL CREDIT</text>
+  <text x="70" y="340" fill="#d8e4ff" font-family="Arial, Helvetica, sans-serif" font-size="24">Harbor Bank</text>
+  <circle cx="516" cy="319" r="33" fill="#eb001b"/>
+  <circle cx="554" cy="319" r="33" fill="#f79e1b" opacity=".92"/>
+</svg>

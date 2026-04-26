@@ -1,0 +1,661 @@
+.card-filter-panel {
+    margin: 1.3rem 0 2rem;
+    padding: 1.05rem 0 1.35rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.72rem;
+    margin-bottom: 1.15rem;
+}
+
+.card-stat {
+    position: relative;
+    display: grid;
+    gap: 0.24rem;
+    overflow: hidden;
+    padding: 0.9rem 0.95rem 0.82rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    background: linear-gradient(180deg, #fff, #fbfcfd);
+    box-shadow: 0 10px 24px rgba(25, 36, 48, 0.06);
+    --stat-accent: #222;
+}
+
+.card-stat::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--stat-accent);
+}
+
+.card-stat:nth-child(2) {
+    --stat-accent: #0b5c8f;
+}
+
+.card-stat:nth-child(3) {
+    --stat-accent: #7f4c16;
+}
+
+.card-stat:nth-child(4) {
+    --stat-accent: #17633a;
+}
+
+.card-stat-value {
+    color: #111;
+    font-family: var(--font-family-serif);
+    font-size: 1.52rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.card-stat-label {
+    color: var(--text-grey-color);
+    font-size: 0.82rem;
+}
+
+.card-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+    --card-control-font-size: 0.9rem;
+    --card-control-height: 2.25rem;
+    --card-control-label-height: 1.1rem;
+    --card-control-line-height: 1.2;
+}
+
+.card-search-control,
+.card-sort-control,
+.card-view-control {
+    display: grid;
+    grid-template-rows: var(--card-control-label-height) var(--card-control-height);
+    gap: 0.42rem;
+    align-items: start;
+    min-width: 0;
+}
+
+.card-filter-panel legend,
+.card-search-control span,
+.card-sort-control span,
+.card-view-control > span {
+    color: var(--text-grey-color);
+    font-size: 0.82rem;
+    line-height: var(--card-control-label-height);
+}
+
+.card-search-control input,
+.card-sort-control select {
+    width: 100%;
+    height: var(--card-control-height);
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+    background: #fff;
+    color: #222;
+    font: inherit;
+    font-size: var(--card-control-font-size);
+    line-height: var(--card-control-line-height);
+    padding: 0 0.62rem;
+}
+
+.card-filter-groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem 1.4rem;
+    align-items: end;
+}
+
+.card-filter-panel fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.card-filter-panel legend {
+    margin-bottom: 0.5rem;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.card-view-options {
+    display: flex;
+    gap: 0.45rem;
+    align-items: stretch;
+    height: var(--card-control-height);
+}
+
+.filter-button,
+.filter-reset,
+.view-button {
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 8px;
+    background: #fff;
+    color: #222;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.88rem;
+    line-height: 1.2;
+    padding: 0.34rem 0.66rem;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.filter-button:hover,
+.filter-reset:hover,
+.view-button:hover {
+    border-color: rgba(0, 0, 0, 0.34);
+}
+
+.filter-button:focus-visible,
+.filter-reset:focus-visible,
+.view-button:focus-visible,
+.card-search-control input:focus-visible,
+.card-sort-control select:focus-visible,
+.card-preview-button:focus-visible .card-frame,
+.card-lightbox-close:focus-visible {
+    outline: 2px solid var(--link-color);
+    outline-offset: 2px;
+}
+
+.filter-button.active,
+.view-button.active {
+    border-color: #222;
+    background: #222;
+    color: #fff;
+}
+
+.view-button {
+    display: inline-flex;
+    min-height: var(--card-control-height);
+    align-items: center;
+    justify-content: center;
+    font-size: var(--card-control-font-size);
+    line-height: var(--card-control-line-height);
+    padding-top: 0;
+    padding-right: 0.78rem;
+    padding-bottom: 0;
+    padding-left: 0.78rem;
+}
+
+.filter-status-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.filter-count {
+    max-width: none;
+    margin: 0;
+    color: var(--text-grey-color);
+    font-size: 0.9rem;
+    line-height: 1.35;
+    text-align: left;
+}
+
+.filter-empty,
+.card-error {
+    color: var(--text-grey-color);
+}
+
+.bank-section {
+    margin: 0 0 3rem;
+    --bank-color: var(--link-color);
+    --bank-logo-height: 3.4rem;
+}
+
+.timeline-section {
+    margin: 0 0 3rem;
+}
+
+.bank-section h2 {
+    position: relative;
+    display: flex;
+    gap: 0.86rem;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0 0 0.78rem;
+    margin: 1rem 0 1.25rem;
+}
+
+.bank-logo {
+    display: block;
+    height: var(--bank-logo-height);
+    margin-bottom: 0.1rem;
+}
+
+.bank-logo img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+}
+
+.bank-monogram {
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: 3.15rem;
+    height: 3.15rem;
+    border-radius: 8px;
+    background: var(--bank-color);
+    color: #fff;
+    font-family: var(--font-family-sans);
+    font-size: 0.76rem;
+    font-weight: 750;
+    line-height: 1;
+    box-shadow: inset 0 -0.55rem 1.1rem rgba(0, 0, 0, 0.12);
+}
+
+.bank-wordmark {
+    display: grid;
+    gap: 0.18rem;
+    min-width: 0;
+}
+
+.bank-name,
+.bank-local-name {
+    display: block;
+}
+
+.bank-local-name {
+    color: var(--bank-color);
+    font-family: var(--font-family-serif);
+    font-size: 1.42rem;
+    font-weight: 700;
+    line-height: 1.12;
+}
+
+.bank-name {
+    color: var(--text-grey-color);
+    font-family: var(--font-family-sans);
+    font-size: 0.8rem;
+    font-weight: 650;
+    line-height: 1.25;
+}
+
+.card-cover-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.45rem 1.15rem;
+    margin: 1.3rem 0 1.8rem;
+}
+
+.card-entry {
+    min-width: 0;
+    justify-self: stretch;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(25, 36, 48, 0.06);
+    --card-image-position: center;
+    --card-image-scale: 1;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card-entry:hover {
+    border-color: rgba(0, 0, 0, 0.13);
+    box-shadow: 0 14px 30px rgba(25, 36, 48, 0.1);
+    transform: translateY(-2px);
+}
+
+.card-preview-button {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+    text-align: left;
+}
+
+.card-frame {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 85.6 / 53.98;
+    overflow: hidden;
+    border-radius: 7px 7px 0 0;
+    background: #f4f4f4;
+    isolation: isolate;
+    box-shadow: none;
+    transform: translateY(0);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-frame::before,
+.card-frame::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+}
+
+.card-frame::before {
+    z-index: 2;
+    inset: -40% -75%;
+    background: linear-gradient(
+        115deg,
+        transparent 34%,
+        rgba(255, 255, 255, 0.16) 43%,
+        rgba(255, 255, 255, 0.46) 50%,
+        rgba(255, 255, 255, 0.16) 57%,
+        transparent 66%
+    );
+    opacity: 0;
+    transform: translateX(-58%) rotate(8deg);
+    transition: transform 0.58s ease, opacity 0.32s ease;
+    mix-blend-mode: screen;
+}
+
+.card-frame::after {
+    z-index: 3;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        radial-gradient(circle at 22% 16%, rgba(255, 255, 255, 0.28), transparent 26%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.16), transparent 36%, rgba(0, 0, 0, 0.16));
+    opacity: 0.16;
+    transition: opacity 0.25s ease;
+}
+
+.card-entry:hover .card-frame,
+.card-preview-button:focus-visible .card-frame {
+    box-shadow: none;
+}
+
+.card-entry:hover .card-frame::before,
+.card-preview-button:focus-visible .card-frame::before {
+    opacity: 1;
+    transform: translateX(58%) rotate(8deg);
+}
+
+.card-entry:hover .card-frame::after,
+.card-preview-button:focus-visible .card-frame::after {
+    opacity: 0.28;
+}
+
+.card-cover {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--card-image-position);
+    transform: scale(var(--card-image-scale));
+    transition: transform 0.25s ease;
+}
+
+.card-entry:hover .card-cover,
+.card-preview-button:focus-visible .card-cover {
+    transform: scale(var(--card-image-scale)) scale(1.014);
+}
+
+.card-caption {
+    padding: 0.95rem 0.9rem 0.92rem;
+}
+
+.card-caption h3 {
+    min-width: 0;
+    margin: 0;
+    font-family: var(--font-family-sans);
+    font-size: 0.98rem;
+    font-weight: 650;
+    line-height: 1.3;
+}
+
+.card-bank-name {
+    margin: 0.34rem 0 0;
+    color: var(--text-grey-color);
+    font-size: 0.84rem;
+    line-height: 1.35;
+}
+
+.card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.42rem;
+    margin-top: 0.74rem;
+}
+
+.card-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.35rem;
+    box-sizing: border-box;
+    border-radius: 999px;
+    padding: 0.12rem 0.5rem;
+    background: #f1f3f5;
+    color: #5b626b;
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.card-badge-type.debit {
+    background: #edf7ed;
+    color: #236523;
+}
+
+.card-badge-type.credit {
+    background: #eef3ff;
+    color: #2850a7;
+}
+
+.card-badge-unionpay {
+    background: #eaf7f6;
+    color: #0c6b63;
+}
+
+.card-badge-mastercard {
+    background: #fff4db;
+    color: #956104;
+}
+
+.card-badge-visa {
+    background: #eef3ff;
+    color: #2850a7;
+}
+
+.card-badge-amex {
+    background: #f3eefb;
+    color: #6640a1;
+}
+
+.card-badge-note {
+    background: #f1f1f1;
+    color: #666;
+}
+
+.card-badge-active {
+    background: #dcefdc;
+    color: #155f2b;
+}
+
+.card-date {
+    margin: 0.72rem 0 0;
+    color: var(--text-grey-color);
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+.card-lightbox[hidden] {
+    display: none;
+}
+
+.card-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+}
+
+.card-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.58);
+}
+
+.card-lightbox-panel {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.65fr);
+    gap: 1.2rem;
+    width: min(980px, 100%);
+    max-height: calc(100vh - 2rem);
+    overflow: auto;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background: #fff;
+    padding: 1rem;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+}
+
+.card-lightbox-close {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.65rem;
+    z-index: 2;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: #222;
+    cursor: pointer;
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.card-lightbox-image-wrap {
+    display: grid;
+    place-items: center;
+    min-height: 12rem;
+    border-radius: 6px;
+    background: #f4f5f7;
+}
+
+.card-lightbox-image-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4% / 6.3%;
+}
+
+.card-lightbox-details {
+    align-self: center;
+    padding-right: 1.6rem;
+}
+
+.card-lightbox-bank {
+    margin: 0 0 0.35rem;
+    color: var(--text-grey-color);
+    font-size: 0.9rem;
+}
+
+.card-lightbox-details h2 {
+    margin: 0 0 1rem;
+    font-size: 1.45rem;
+    line-height: 1.2;
+}
+
+.card-lightbox-details dl {
+    display: grid;
+    gap: 0.62rem;
+    margin: 0;
+}
+
+.card-lightbox-details dl div {
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr);
+    gap: 0.75rem;
+}
+
+.card-lightbox-details dt {
+    color: var(--text-grey-color);
+    font-size: 0.82rem;
+}
+
+.card-lightbox-details dd {
+    margin: 0;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.has-card-lightbox {
+    overflow: hidden;
+}
+
+@media (min-width: 640px) {
+    .card-summary {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card-toolbar {
+        grid-template-columns: minmax(16rem, 1fr) minmax(10rem, 14rem) minmax(11rem, max-content);
+        align-items: end;
+    }
+
+    .card-cover-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 920px) {
+    .card-cover-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1180px) {
+    html {
+        max-width: 1240px;
+    }
+
+    .card-cover-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .bank-heading-logo {
+        justify-content: center;
+    }
+
+    .bank-logo img {
+        max-width: 88vw;
+    }
+
+    .card-entry {
+        width: 90%;
+        justify-self: center;
+    }
+
+    .card-lightbox-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .card-lightbox-details {
+        padding-right: 0;
+    }
+}

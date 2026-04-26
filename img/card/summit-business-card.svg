@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="402" viewBox="0 0 640 402" role="img" aria-labelledby="title desc">
+  <title id="title">Business Card sample card</title>
+  <desc id="desc">Anonymous black business card placeholder.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1e2328"/>
+      <stop offset="1" stop-color="#050607"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="402" rx="30" fill="url(#bg)"/>
+  <path d="M-40 111c172-71 280 51 431-19 113-52 190-17 289 43" fill="none" stroke="#fff" stroke-width="12" opacity=".12"/>
+  <path d="M-40 158c172-71 280 51 431-19 113-52 190-17 289 43" fill="none" stroke="#fff" stroke-width="7" opacity=".14"/>
+  <rect x="70" y="148" width="76" height="58" rx="10" fill="#ddc782"/>
+  <path d="M70 177h76M108 148v58" stroke="#937a3d" stroke-width="4" opacity=".55"/>
+  <text x="70" y="302" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">BUSINESS CARD</text>
+  <text x="70" y="340" fill="#cfd6dd" font-family="Arial, Helvetica, sans-serif" font-size="24">Summit Bank</text>
+  <text x="508" y="334" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">AMEX</text>
+</svg>

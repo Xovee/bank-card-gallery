@@ -1,0 +1,679 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Bank Card Gallery</title>
+  <meta name="description" content="A static bank card gallery template with filters, sorting, bank groups, and timeline views.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="Bank Card Gallery">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="A static bank card gallery template with filters, sorting, bank groups, and timeline views.">
+
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/card.css">
+</head>
+
+<body>
+  <h1>Bank Card Gallery</h1>
+
+  <p class="breadcrumb"><a href="./">Home</a> &gt; Cards</p>
+
+  <p>
+    A static gallery for showcasing card images by issuing bank, date, type, and payment network.
+  </p>
+
+  <hr>
+
+  <main class="page-reading">
+
+    <section class="card-filter-panel" aria-label="Filter cards">
+<!-- card-filter-panel:start -->
+      <div class="card-summary" aria-label="Card collection summary">
+        <div class="card-stat"><span class="card-stat-value">6</span><span class="card-stat-label">Cards</span></div>
+        <div class="card-stat"><span class="card-stat-value">3</span><span class="card-stat-label">Banks</span></div>
+        <div class="card-stat"><span class="card-stat-value">3</span><span class="card-stat-label">Credit</span></div>
+        <div class="card-stat"><span class="card-stat-value">3</span><span class="card-stat-label">Debit</span></div>
+      </div>
+
+      <div class="card-toolbar">
+        <label class="card-search-control" for="card-search">
+          <span>Search</span>
+          <input id="card-search" type="search" autocomplete="off" placeholder="Card, bank, code">
+        </label>
+
+        <label class="card-sort-control" for="card-sort">
+          <span>Sort</span>
+          <select id="card-sort">
+            <option value="default">Collection order</option>
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="name">Name</option>
+            <option value="type">Type</option>
+          </select>
+        </label>
+
+        <div class="card-view-control" aria-label="Catalog view">
+          <span>View</span>
+          <div class="card-view-options" role="group" aria-label="Catalog view">
+            <button class="view-button active" type="button" data-card-view-button="banks" aria-pressed="true">Banks</button>
+            <button class="view-button" type="button" data-card-view-button="timeline" aria-pressed="false">Timeline</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-filter-groups">
+        <fieldset data-filter-control="bank">
+          <legend>Bank</legend>
+          <div class="filter-options">
+            <button class="filter-button active" type="button" data-filter-group="bank" data-filter-value="all" aria-pressed="true">All</button>
+            <button class="filter-button" type="button" data-filter-group="bank" data-filter-value="river" aria-pressed="false">RIVER</button>
+            <button class="filter-button" type="button" data-filter-group="bank" data-filter-value="harbor" aria-pressed="false">HARBOR</button>
+            <button class="filter-button" type="button" data-filter-group="bank" data-filter-value="summit" aria-pressed="false">SUMMIT</button>
+          </div>
+        </fieldset>
+
+        <fieldset data-filter-control="type">
+          <legend>Type</legend>
+          <div class="filter-options">
+            <button class="filter-button active" type="button" data-filter-group="type" data-filter-value="all" aria-pressed="true">All</button>
+            <button class="filter-button" type="button" data-filter-group="type" data-filter-value="debit" aria-pressed="false">Debit</button>
+            <button class="filter-button" type="button" data-filter-group="type" data-filter-value="credit" aria-pressed="false">Credit</button>
+          </div>
+        </fieldset>
+
+        <fieldset data-filter-control="network">
+          <legend>Network</legend>
+          <div class="filter-options">
+            <button class="filter-button active" type="button" data-filter-group="network" data-filter-value="all" aria-pressed="true">All</button>
+            <button class="filter-button" type="button" data-filter-group="network" data-filter-value="unionpay" aria-pressed="false">UnionPay</button>
+            <button class="filter-button" type="button" data-filter-group="network" data-filter-value="visa" aria-pressed="false">Visa</button>
+            <button class="filter-button" type="button" data-filter-group="network" data-filter-value="mastercard" aria-pressed="false">MasterCard</button>
+            <button class="filter-button" type="button" data-filter-group="network" data-filter-value="amex" aria-pressed="false">AMEX</button>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="filter-status-row">
+        <p id="filter-count" class="filter-count" aria-live="polite">Showing 6 of 6 cards</p>
+        <button id="reset-filters" class="filter-reset" type="button" hidden>Reset</button>
+      </div>
+<!-- card-filter-panel:end -->
+    </section>
+
+    <div id="card-empty" class="filter-empty" hidden>No cards match the current filters.</div>
+
+    <div id="card-bank-catalog" class="card-catalog-view" data-card-view="banks">
+<!-- card-bank-catalog:start -->
+    <section class="bank-section bank-river" aria-labelledby="bank-river" style="--bank-color: #17633a; --bank-logo-height: 3.2rem;">
+      <h2 id="bank-river" class="bank-heading bank-heading-logo">
+        <span class="bank-logo"><img src="img/logo/river-bank.svg" alt="河岸银行 River Bank" loading="lazy" decoding="async"></span>
+      </h2>
+
+      <div class="card-cover-grid">
+        <article class="card-entry" data-card-index="0" data-card-bank="river" data-card-bank-label="RIVER" data-card-bank-name="River Bank" data-card-bank-local-name="河岸银行" data-card-type="debit" data-card-type-label="Debit" data-card-network="unionpay" data-card-network-labels="UnionPay" data-card-title="Everyday Debit" data-card-image="img/card/river-everyday-debit.svg" data-card-alt="Anonymous green debit card illustration" data-card-date="2022-03-30" data-card-date-label="Mar 2022" data-card-note="" data-card-code="" data-card-search="everyday debit anonymous green debit card illustration river river bank 河岸银行 debit unionpay 2022-03-30 mar 2022 active">
+          <button class="card-preview-button" type="button" aria-label="View Everyday Debit">
+            <span class="card-frame">
+              <img class="card-cover" src="img/card/river-everyday-debit.svg" alt="Anonymous green debit card illustration" width="640" height="402" loading="eager" fetchpriority="high" decoding="async">
+            </span>
+          </button>
+          <div class="card-caption">
+            <h3>Everyday Debit</h3>
+            <p class="card-bank-name">
+              <span>River Bank</span>
+            </p>
+            <div class="card-badges" aria-label="Card tags">
+              <span class="card-badge card-badge-type debit">Debit</span>
+              <span class="card-badge card-badge-network card-badge-unionpay">UnionPay</span>
+              <span class="card-badge card-badge-active">Active</span>
+            </div>
+            <p class="card-date"><time datetime="2022-03-30">Mar 2022</time></p>
+          </div>
+        </article>
+
+        <article class="card-entry" data-card-index="1" data-card-bank="river" data-card-bank-label="RIVER" data-card-bank-name="River Bank" data-card-bank-local-name="河岸银行" data-card-type="debit" data-card-type-label="Debit" data-card-network="visa" data-card-network-labels="Visa" data-card-title="Salary Card" data-card-image="img/card/river-salary-card.svg" data-card-alt="Anonymous gray debit card illustration" data-card-date="2021-08-12" data-card-date-label="Aug 2021" data-card-note="" data-card-code="" data-card-search="salary card anonymous gray debit card illustration river river bank 河岸银行 debit visa 2021-08-12 aug 2021">
+          <button class="card-preview-button" type="button" aria-label="View Salary Card">
+            <span class="card-frame">
+              <img class="card-cover" src="img/card/river-salary-card.svg" alt="Anonymous gray debit card illustration" width="640" height="402" loading="eager" fetchpriority="high" decoding="async">
+            </span>
+          </button>
+          <div class="card-caption">
+            <h3>Salary Card</h3>
+            <p class="card-bank-name">
+              <span>River Bank</span>
+            </p>
+            <div class="card-badges" aria-label="Card tags">
+              <span class="card-badge card-badge-type debit">Debit</span>
+              <span class="card-badge card-badge-network card-badge-visa">Visa</span>
+            </div>
+            <p class="card-date"><time datetime="2021-08-12">Aug 2021</time></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="bank-section bank-harbor" aria-labelledby="bank-harbor" style="--bank-color: #0b5c8f; --bank-logo-height: 3.2rem;">
+      <h2 id="bank-harbor" class="bank-heading bank-heading-logo">
+        <span class="bank-logo"><img src="img/logo/harbor-bank.svg" alt="港湾银行 Harbor Bank" loading="lazy" decoding="async"></span>
+      </h2>
+
+      <div class="card-cover-grid">
+        <article class="card-entry" data-card-index="2" data-card-bank="harbor" data-card-bank-label="HARBOR" data-card-bank-name="Harbor Bank" data-card-bank-local-name="港湾银行" data-card-type="credit" data-card-type-label="Credit" data-card-network="mastercard" data-card-network-labels="MasterCard" data-card-title="Travel Credit" data-card-image="img/card/harbor-travel-credit.svg" data-card-alt="Anonymous blue credit card illustration" data-card-date="2024-05-18" data-card-date-label="May 2024" data-card-note="" data-card-code="" data-card-search="travel credit anonymous blue credit card illustration harbor harbor bank 港湾银行 credit mastercard 2024-05-18 may 2024 active">
+          <button class="card-preview-button" type="button" aria-label="View Travel Credit">
+            <span class="card-frame">
+              <img class="card-cover" src="img/card/harbor-travel-credit.svg" alt="Anonymous blue credit card illustration" width="640" height="402" loading="eager" fetchpriority="high" decoding="async">
+            </span>
+          </button>
+          <div class="card-caption">
+            <h3>Travel Credit</h3>
+            <p class="card-bank-name">
+              <span>Harbor Bank</span>
+            </p>
+            <div class="card-badges" aria-label="Card tags">
+              <span class="card-badge card-badge-type credit">Credit</span>
+              <span class="card-badge card-badge-network card-badge-mastercard">MasterCard</span>
+              <span class="card-badge card-badge-active">Active</span>
+            </div>
+            <p class="card-date"><time datetime="2024-05-18">May 2024</time></p>
+          </div>
+        </article>
+
+        <article class="card-entry" data-card-index="3" data-card-bank="harbor" data-card-bank-label="HARBOR" data-card-bank-name="Harbor Bank" data-card-bank-local-name="港湾银行" data-card-type="debit" data-card-type-label="Debit" data-card-network="unionpay" data-card-network-labels="UnionPay" data-card-title="Student Card" data-card-image="img/card/harbor-student-card.svg" data-card-alt="Anonymous teal debit card illustration" data-card-date="2019-09-01" data-card-date-label="Sep 2019" data-card-note="Scan" data-card-code="" data-card-search="student card anonymous teal debit card illustration harbor harbor bank 港湾银行 debit unionpay 2019-09-01 sep 2019 scan">
+          <button class="card-preview-button" type="button" aria-label="View Student Card">
+            <span class="card-frame">
+              <img class="card-cover" src="img/card/harbor-student-card.svg" alt="Anonymous teal debit card illustration" width="640" height="402" loading="eager" fetchpriority="high" decoding="async">
+            </span>
+          </button>
+          <div class="card-caption">
+            <h3>Student Card</h3>
+            <p class="card-bank-name">
+              <span>Harbor Bank</span>
+            </p>
+            <div class="card-badges" aria-label="Card tags">
+              <span class="card-badge card-badge-type debit">Debit</span>
+              <span class="card-badge card-badge-network card-badge-unionpay">UnionPay</span>
+              <span class="card-badge card-badge-note">Scan</span>
+            </div>
+            <p class="card-date"><time datetime="2019-09-01">Sep 2019</time></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="bank-section bank-summit" aria-labelledby="bank-summit" style="--bank-color: #7f4c16; --bank-logo-height: 3.2rem;">
+      <h2 id="bank-summit" class="bank-heading bank-heading-logo">
+        <span class="bank-logo"><img src="img/logo/summit-bank.svg" alt="山岳银行 Summit Bank" loading="lazy" decoding="async"></span>
+      </h2>
+
+      <div class="card-cover-grid">
+        <article class="card-entry" data-card-index="4" data-card-bank="summit" data-card-bank-label="SUMMIT" data-card-bank-name="Summit Bank" data-card-bank-local-name="山岳银行" data-card-type="credit" data-card-type-label="Credit" data-card-network="visa" data-card-network-labels="Visa" data-card-title="Gold Credit" data-card-image="img/card/summit-gold-credit.svg" data-card-alt="Anonymous gold credit card illustration" data-card-date="2023-11-10" data-card-date-label="Nov 2023" data-card-note="" data-card-code="" data-card-search="gold credit anonymous gold credit card illustration summit summit bank 山岳银行 credit visa 2023-11-10 nov 2023">
+          <button class="card-preview-button" type="button" aria-label="View Gold Credit">
+            <span class="card-frame">
+              <img class="card-cover" src="img/card/summit-gold-credit.svg" alt="Anonymous gold credit card illustration" width="640" height="402" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <div class="card-caption">
+            <h3>Gold Credit</h3>
+            <p class="card-bank-name">
+              <span>Summit Bank</span>
+            </p>
+            <div class="card-badges" aria-label="Card tags">
+              <span class="card-badge card-badge-type credit">Credit</span>
+              <span class="card-badge card-badge-network card-badge-visa">Visa</span>
+            </div>
+            <p class="card-date"><time datetime="2023-11-10">Nov 2023</time></p>
+          </div>
+        </article>
+
+        <article class="card-entry" data-card-index="5" data-card-bank="summit" data-card-bank-label="SUMMIT" data-card-bank-name="Summit Bank" data-card-bank-local-name="山岳银行" data-card-type="credit" data-card-type-label="Credit" data-card-network="amex" data-card-network-labels="AMEX" data-card-title="Business Card" data-card-image="img/card/summit-business-card.svg" data-card-alt="Anonymous black business card illustration" data-card-date="2025-01-06" data-card-date-label="Jan 2025" data-card-note="" data-card-code="" data-card-search="business card anonymous black business card illustration summit summit bank 山岳银行 credit amex 2025-01-06 jan 2025 active">
+          <button class="card-preview-button" type="button" aria-label="View Business Card">
+            <span class="card-frame">
+              <img class="card-cover" src="img/card/summit-business-card.svg" alt="Anonymous black business card illustration" width="640" height="402" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <div class="card-caption">
+            <h3>Business Card</h3>
+            <p class="card-bank-name">
+              <span>Summit Bank</span>
+            </p>
+            <div class="card-badges" aria-label="Card tags">
+              <span class="card-badge card-badge-type credit">Credit</span>
+              <span class="card-badge card-badge-network card-badge-amex">AMEX</span>
+              <span class="card-badge card-badge-active">Active</span>
+            </div>
+            <p class="card-date"><time datetime="2025-01-06">Jan 2025</time></p>
+          </div>
+        </article>
+      </div>
+    </section>
+<!-- card-bank-catalog:end -->
+    </div>
+
+    <div id="card-timeline-catalog" class="card-catalog-view" data-card-view="timeline" hidden>
+<!-- card-timeline-catalog:start -->
+    <section class="timeline-section" aria-label="Timeline">
+      <div class="card-cover-grid timeline-grid">
+        <article class="card-entry" data-card-index="0" data-card-bank="summit" data-card-bank-label="SUMMIT" data-card-bank-name="Summit Bank" data-card-bank-local-name="山岳银行" data-card-type="credit" data-card-type-label="Credit" data-card-network="amex" data-card-network-labels="AMEX" data-card-title="Business Card" data-card-image="img/card/summit-business-card.svg" data-card-alt="Anonymous black business card illustration" data-card-date="2025-01-06" data-card-date-label="Jan 2025" data-card-note="" data-card-code="" data-card-search="business card anonymous black business card illustration summit summit bank 山岳银行 credit amex 2025-01-06 jan 2025 active">
+          <button class="card-preview-button" type="button" aria-label="View Business Card">
+            <span class="card-frame">
+              <img class="card-cover" src="img/card/summit-business-card.svg" alt="Anonymous black business card illustration" width="640" height="402" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <div class="card-caption">
+            <h3>Business Card</h3>
+            <p class="card-bank-name">
+              <span>Summit Bank</span>
+            </p>
+            <div class="card-badges" aria-label="Card tags">
+              <span class="card-badge card-badge-type credit">Credit</span>
+              <span class="card-badge card-badge-network card-badge-amex">AMEX</span>
+              <span class="card-badge card-badge-active">Active</span>
+            </div>
+            <p class="card-date"><time datetime="2025-01-06">Jan 2025</time></p>
+          </div>
+        </article>
+
+        <article class="card-entry" data-card-index="1" data-card-bank="harbor" data-card-bank-label="HARBOR" data-card-bank-name="Harbor Bank" data-card-bank-local-name="港湾银行" data-card-type="credit" data-card-type-label="Credit" data-card-network="mastercard" data-card-network-labels="MasterCard" data-card-title="Travel Credit" data-card-image="img/card/harbor-travel-credit.svg" data-card-alt="Anonymous blue credit card illustration" data-card-date="2024-05-18" data-card-date-label="May 2024" data-card-note="" data-card-code="" data-card-search="travel credit anonymous blue credit card illustration harbor harbor bank 港湾银行 credit mastercard 2024-05-18 may 2024 active">
+          <button class="card-preview-button" type="button" aria-label="View Travel Credit">
+            <span class="card-frame">
+              <img class="card-cover" src="img/card/harbor-travel-credit.svg" alt="Anonymous blue credit card illustration" width="640" height="402" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <div class="card-caption">
+            <h3>Travel Credit</h3>
+            <p class="card-bank-name">
+              <span>Harbor Bank</span>
+            </p>
+            <div class="card-badges" aria-label="Card tags">
+              <span class="card-badge card-badge-type credit">Credit</span>
+              <span class="card-badge card-badge-network card-badge-mastercard">MasterCard</span>
+              <span class="card-badge card-badge-active">Active</span>
+            </div>
+            <p class="card-date"><time datetime="2024-05-18">May 2024</time></p>
+          </div>
+        </article>
+
+        <article class="card-entry" data-card-index="2" data-card-bank="summit" data-card-bank-label="SUMMIT" data-card-bank-name="Summit Bank" data-card-bank-local-name="山岳银行" data-card-type="credit" data-card-type-label="Credit" data-card-network="visa" data-card-network-labels="Visa" data-card-title="Gold Credit" data-card-image="img/card/summit-gold-credit.svg" data-card-alt="Anonymous gold credit card illustration" data-card-date="2023-11-10" data-card-date-label="Nov 2023" data-card-note="" data-card-code="" data-card-search="gold credit anonymous gold credit card illustration summit summit bank 山岳银行 credit visa 2023-11-10 nov 2023">
+          <button class="card-preview-button" type="button" aria-label="View Gold Credit">
+            <span class="card-frame">
+              <img class="card-cover" src="img/card/summit-gold-credit.svg" alt="Anonymous gold credit card illustration" width="640" height="402" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <div class="card-caption">
+            <h3>Gold Credit</h3>
+            <p class="card-bank-name">
+              <span>Summit Bank</span>
+            </p>
+            <div class="card-badges" aria-label="Card tags">
+              <span class="card-badge card-badge-type credit">Credit</span>
+              <span class="card-badge card-badge-network card-badge-visa">Visa</span>
+            </div>
+            <p class="card-date"><time datetime="2023-11-10">Nov 2023</time></p>
+          </div>
+        </article>
+
+        <article class="card-entry" data-card-index="3" data-card-bank="river" data-card-bank-label="RIVER" data-card-bank-name="River Bank" data-card-bank-local-name="河岸银行" data-card-type="debit" data-card-type-label="Debit" data-card-network="unionpay" data-card-network-labels="UnionPay" data-card-title="Everyday Debit" data-card-image="img/card/river-everyday-debit.svg" data-card-alt="Anonymous green debit card illustration" data-card-date="2022-03-30" data-card-date-label="Mar 2022" data-card-note="" data-card-code="" data-card-search="everyday debit anonymous green debit card illustration river river bank 河岸银行 debit unionpay 2022-03-30 mar 2022 active">
+          <button class="card-preview-button" type="button" aria-label="View Everyday Debit">
+            <span class="card-frame">
+              <img class="card-cover" src="img/card/river-everyday-debit.svg" alt="Anonymous green debit card illustration" width="640" height="402" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <div class="card-caption">
+            <h3>Everyday Debit</h3>
+            <p class="card-bank-name">
+              <span>River Bank</span>
+            </p>
+            <div class="card-badges" aria-label="Card tags">
+              <span class="card-badge card-badge-type debit">Debit</span>
+              <span class="card-badge card-badge-network card-badge-unionpay">UnionPay</span>
+              <span class="card-badge card-badge-active">Active</span>
+            </div>
+            <p class="card-date"><time datetime="2022-03-30">Mar 2022</time></p>
+          </div>
+        </article>
+
+        <article class="card-entry" data-card-index="4" data-card-bank="river" data-card-bank-label="RIVER" data-card-bank-name="River Bank" data-card-bank-local-name="河岸银行" data-card-type="debit" data-card-type-label="Debit" data-card-network="visa" data-card-network-labels="Visa" data-card-title="Salary Card" data-card-image="img/card/river-salary-card.svg" data-card-alt="Anonymous gray debit card illustration" data-card-date="2021-08-12" data-card-date-label="Aug 2021" data-card-note="" data-card-code="" data-card-search="salary card anonymous gray debit card illustration river river bank 河岸银行 debit visa 2021-08-12 aug 2021">
+          <button class="card-preview-button" type="button" aria-label="View Salary Card">
+            <span class="card-frame">
+              <img class="card-cover" src="img/card/river-salary-card.svg" alt="Anonymous gray debit card illustration" width="640" height="402" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <div class="card-caption">
+            <h3>Salary Card</h3>
+            <p class="card-bank-name">
+              <span>River Bank</span>
+            </p>
+            <div class="card-badges" aria-label="Card tags">
+              <span class="card-badge card-badge-type debit">Debit</span>
+              <span class="card-badge card-badge-network card-badge-visa">Visa</span>
+            </div>
+            <p class="card-date"><time datetime="2021-08-12">Aug 2021</time></p>
+          </div>
+        </article>
+
+        <article class="card-entry" data-card-index="5" data-card-bank="harbor" data-card-bank-label="HARBOR" data-card-bank-name="Harbor Bank" data-card-bank-local-name="港湾银行" data-card-type="debit" data-card-type-label="Debit" data-card-network="unionpay" data-card-network-labels="UnionPay" data-card-title="Student Card" data-card-image="img/card/harbor-student-card.svg" data-card-alt="Anonymous teal debit card illustration" data-card-date="2019-09-01" data-card-date-label="Sep 2019" data-card-note="Scan" data-card-code="" data-card-search="student card anonymous teal debit card illustration harbor harbor bank 港湾银行 debit unionpay 2019-09-01 sep 2019 scan">
+          <button class="card-preview-button" type="button" aria-label="View Student Card">
+            <span class="card-frame">
+              <img class="card-cover" src="img/card/harbor-student-card.svg" alt="Anonymous teal debit card illustration" width="640" height="402" loading="lazy" decoding="async">
+            </span>
+          </button>
+          <div class="card-caption">
+            <h3>Student Card</h3>
+            <p class="card-bank-name">
+              <span>Harbor Bank</span>
+            </p>
+            <div class="card-badges" aria-label="Card tags">
+              <span class="card-badge card-badge-type debit">Debit</span>
+              <span class="card-badge card-badge-network card-badge-unionpay">UnionPay</span>
+              <span class="card-badge card-badge-note">Scan</span>
+            </div>
+            <p class="card-date"><time datetime="2019-09-01">Sep 2019</time></p>
+          </div>
+        </article>
+      </div>
+    </section>
+<!-- card-timeline-catalog:end -->
+    </div>
+
+    <div id="card-lightbox" class="card-lightbox" role="dialog" aria-modal="true" aria-labelledby="card-lightbox-title" hidden>
+      <div class="card-lightbox-backdrop" data-lightbox-close></div>
+      <div class="card-lightbox-panel">
+        <button class="card-lightbox-close" type="button" aria-label="Close card preview" data-lightbox-close>&times;</button>
+        <div class="card-lightbox-image-wrap">
+          <img id="card-lightbox-image" src="" alt="">
+        </div>
+        <div class="card-lightbox-details">
+          <p id="card-lightbox-bank" class="card-lightbox-bank"></p>
+          <h2 id="card-lightbox-title"></h2>
+          <dl>
+            <div data-lightbox-row="type">
+              <dt>Type</dt>
+              <dd id="card-lightbox-type"></dd>
+            </div>
+            <div data-lightbox-row="network">
+              <dt>Network</dt>
+              <dd id="card-lightbox-network"></dd>
+            </div>
+            <div data-lightbox-row="date">
+              <dt>Date</dt>
+              <dd id="card-lightbox-date"></dd>
+            </div>
+            <div data-lightbox-row="code">
+              <dt>Code</dt>
+              <dd id="card-lightbox-code"></dd>
+            </div>
+            <div data-lightbox-row="note">
+              <dt>Note</dt>
+              <dd id="card-lightbox-note"></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <hr>
+
+  <footer>
+    <span class="copyright footer-item">&copy; <span id="current-year"></span></span>
+    <span class="footer-item">Bank Card Gallery</span>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to Top">&#9650;</button>
+
+  <script>
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    const backBtn = document.getElementById("back-to-top");
+    window.addEventListener("scroll", () => {
+      const y = document.documentElement.scrollTop || document.body.scrollTop;
+      backBtn.style.display = y > 500 ? "flex" : "none";
+    });
+    backBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  </script>
+
+  <script>
+    const filters = { bank: "all", type: "all", network: "all" };
+    const emptyMessage = document.querySelector(".filter-empty");
+    const filterCount = document.getElementById("filter-count");
+    const resetButton = document.getElementById("reset-filters");
+    const searchInput = document.getElementById("card-search");
+    const sortSelect = document.getElementById("card-sort");
+    const filterButtons = Array.from(document.querySelectorAll(".filter-button"));
+    const viewButtons = Array.from(document.querySelectorAll("[data-card-view-button]"));
+    const catalogViews = Array.from(document.querySelectorAll(".card-catalog-view"));
+    const cardEntries = Array.from(document.querySelectorAll(".card-entry"));
+    const catalogSections = Array.from(document.querySelectorAll(".bank-section, .timeline-section"));
+    let currentView = "banks";
+    const collator = new Intl.Collator(["zh-Hans", "en"], { numeric: true, sensitivity: "base" });
+
+    function normalize(value) {
+      return (value || "").trim().toLowerCase();
+    }
+
+    function updateFilterButtonState(group) {
+      document.querySelectorAll(`.filter-button[data-filter-group="${group}"]`).forEach((button) => {
+        const isActive = button.dataset.filterValue === filters[group];
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+    }
+
+    function setFilter(group, value) {
+      if (!Object.prototype.hasOwnProperty.call(filters, group)) {
+        return;
+      }
+
+      filters[group] = value;
+      updateFilterButtonState(group);
+      updateCards();
+    }
+
+    function resetFilters() {
+      Object.keys(filters).forEach((group) => {
+        filters[group] = "all";
+        updateFilterButtonState(group);
+      });
+      updateCards();
+    }
+
+    function getCurrentViewElement() {
+      return catalogViews.find((view) => view.dataset.cardView === currentView) || catalogViews[0];
+    }
+
+    function getCurrentCards() {
+      const currentViewElement = getCurrentViewElement();
+      return currentViewElement ? Array.from(currentViewElement.querySelectorAll(".card-entry")) : [];
+    }
+
+    function setCatalogView(view) {
+      currentView = view;
+      catalogViews.forEach((catalogView) => {
+        catalogView.hidden = catalogView.dataset.cardView !== currentView;
+      });
+      viewButtons.forEach((button) => {
+        const isActive = button.dataset.cardViewButton === currentView;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+      sortCards();
+      updateCards();
+    }
+
+    function cardMatches(card, query) {
+      const bankMatches = filters.bank === "all" || card.dataset.cardBank === filters.bank;
+      const typeMatches = filters.type === "all" || card.dataset.cardType === filters.type;
+      const networks = (card.dataset.cardNetwork || "").split(/\s+/);
+      const networkMatches = filters.network === "all" || networks.includes(filters.network);
+      const searchMatches = !query || (card.dataset.cardSearch || "").includes(query);
+      return bankMatches && typeMatches && networkMatches && searchMatches;
+    }
+
+    function hasActiveControls() {
+      const hasFilters = Object.values(filters).some((value) => value !== "all");
+      const hasSearch = searchInput && searchInput.value.trim();
+      const hasSort = sortSelect && sortSelect.value !== "default";
+      return hasFilters || hasSearch || hasSort;
+    }
+
+    function compareCards(a, b) {
+      const sortMode = sortSelect ? sortSelect.value : "default";
+      const originalOrder = Number(a.dataset.cardIndex) - Number(b.dataset.cardIndex);
+
+      if (sortMode === "newest" || sortMode === "oldest") {
+        const aDate = a.dataset.cardDate || "";
+        const bDate = b.dataset.cardDate || "";
+        const dateOrder = aDate.localeCompare(bDate);
+        return sortMode === "newest" ? -dateOrder || originalOrder : dateOrder || originalOrder;
+      }
+
+      if (sortMode === "name") {
+        return collator.compare(a.dataset.cardTitle || "", b.dataset.cardTitle || "") || originalOrder;
+      }
+
+      if (sortMode === "type") {
+        return collator.compare(a.dataset.cardTypeLabel || "", b.dataset.cardTypeLabel || "") ||
+          collator.compare(a.dataset.cardTitle || "", b.dataset.cardTitle || "") ||
+          originalOrder;
+      }
+
+      return originalOrder;
+    }
+
+    function sortCards() {
+      catalogSections.forEach((section) => {
+        const grid = section.querySelector(".card-cover-grid");
+        const cards = Array.from(grid.querySelectorAll(".card-entry"));
+        cards.sort(compareCards).forEach((card) => grid.append(card));
+      });
+    }
+
+    function updateCards() {
+      if (!filterCount || !emptyMessage || !resetButton) {
+        return;
+      }
+
+      let visibleCount = 0;
+      const query = normalize(searchInput ? searchInput.value : "");
+      const currentCards = getCurrentCards();
+      const totalCards = currentCards.length;
+
+      cardEntries.forEach((card) => {
+        const isVisible = cardMatches(card, query);
+        card.hidden = !isVisible;
+        if (isVisible && currentCards.includes(card)) {
+          visibleCount += 1;
+        }
+      });
+
+      catalogSections.forEach((section) => {
+        const visibleCards = section.querySelectorAll(".card-entry:not([hidden])").length;
+        section.hidden = visibleCards === 0;
+      });
+
+      const noun = totalCards === 1 ? "card" : "cards";
+      filterCount.textContent = `Showing ${visibleCount} of ${totalCards} ${noun}`;
+      emptyMessage.hidden = visibleCount > 0;
+      resetButton.hidden = !hasActiveControls();
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setFilter(button.dataset.filterGroup, button.dataset.filterValue);
+      });
+    });
+    viewButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setCatalogView(button.dataset.cardViewButton);
+      });
+    });
+    if (searchInput) {
+      searchInput.addEventListener("input", updateCards);
+    }
+    if (sortSelect) {
+      sortSelect.addEventListener("change", () => {
+        sortCards();
+        updateCards();
+      });
+    }
+    if (resetButton) {
+      resetButton.addEventListener("click", () => {
+        if (searchInput) {
+          searchInput.value = "";
+        }
+        if (sortSelect) {
+          sortSelect.value = "default";
+        }
+        sortCards();
+        resetFilters();
+      });
+    }
+
+    const lightbox = document.getElementById("card-lightbox");
+    const lightboxImage = document.getElementById("card-lightbox-image");
+    const lightboxTitle = document.getElementById("card-lightbox-title");
+    const lightboxBank = document.getElementById("card-lightbox-bank");
+    const lightboxClose = lightbox.querySelector(".card-lightbox-close");
+    const lightboxFields = {
+      type: document.getElementById("card-lightbox-type"),
+      network: document.getElementById("card-lightbox-network"),
+      date: document.getElementById("card-lightbox-date"),
+      code: document.getElementById("card-lightbox-code"),
+      note: document.getElementById("card-lightbox-note")
+    };
+    let lastFocusedElement = null;
+
+    function setLightboxField(name, value) {
+      const field = lightboxFields[name];
+      const row = lightbox.querySelector(`[data-lightbox-row="${name}"]`);
+      const text = value || "";
+      field.textContent = text;
+      row.hidden = !text;
+    }
+
+    function openLightbox(card) {
+      lastFocusedElement = document.activeElement;
+      lightboxImage.src = card.dataset.cardImage;
+      lightboxImage.alt = card.dataset.cardAlt || "";
+      lightboxTitle.textContent = card.dataset.cardTitle || "";
+      lightboxBank.textContent = [card.dataset.cardBankName, card.dataset.cardBankLocalName].filter(Boolean).join(" · ");
+      setLightboxField("type", card.dataset.cardTypeLabel);
+      setLightboxField("network", card.dataset.cardNetworkLabels);
+      setLightboxField("date", card.dataset.cardDateLabel);
+      setLightboxField("code", card.dataset.cardCode);
+      setLightboxField("note", card.dataset.cardNote);
+      lightbox.hidden = false;
+      document.body.classList.add("has-card-lightbox");
+      lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      lightboxImage.removeAttribute("src");
+      document.body.classList.remove("has-card-lightbox");
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+      }
+    }
+
+    cardEntries.forEach((card) => {
+      card.querySelector(".card-preview-button").addEventListener("click", () => openLightbox(card));
+    });
+    lightbox.querySelectorAll("[data-lightbox-close]").forEach((element) => {
+      element.addEventListener("click", closeLightbox);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !lightbox.hidden) {
+        closeLightbox();
+      }
+    });
+
+    updateCards();
+  </script>
+</body>
+
+</html>

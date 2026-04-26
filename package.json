@@ -1,0 +1,9 @@
+{
+  "name": "bank-card-gallery",
+  "version": "1.0.0",
+  "description": "Static bank card gallery template with filters, sorting, and timeline views.",
+  "private": true,
+  "scripts": {
+    "build": "node code/build-card-page.js"
+  }
+}
